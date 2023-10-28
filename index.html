@@ -10,8 +10,10 @@
 	</head>
 	<body>
 		<header>
+			<div class="header_container">
 				<img class="site_logo" src="images/logo.png" width="100" height="100"/>
 				<h1 class="site_name">Long term planner</h1>
+			</div>	
 			<nav class="menu_bar">
 				<button class="menu_bar__button">Log out</button>
 				<button class="menu_bar__button">Change board</button>
@@ -19,40 +21,17 @@
 			</nav>
 		</header> 
 		<main>
-			<section class="planning">
-				<button class="planning__button_add add_global_task">Create goal</button> 
-				<div class="planning__task_body">
-					<h2 class="planning__header">Global goals</h2>
-					<ul class="planning__list_tasks">
-						<li class="planning__task" >
-							<span class ="global_task">Task</span>
-							<button class="planning__task__button">+</button>
-							<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-							<ul class="planning__list_tasks"> 
-								<li class="planning__task">
-									<span>Subtask</span>
-									<button class="planning__task__button">+</button>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-								<li class="planning__task">
-									<span>Subtask</span>
-									<button class="planning__task__button">+</button>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-								<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
-							</ul>	
-						</li>
-						<li class="planning__task">
-							<span class ="global_task">Task</span>
-							<button class="planning__task__button">+</button>
-							<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-							<ul class="planning__list_tasks">
-								<li class="planning__task">
-									<span>Subtask</span>
-									<button class="planning__task__button">+</button>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-								<ul class="planning__list_tasks">
+			<div class="planning_container">
+				<section class="planning">
+					<button class="planning__button_add add_global_task">Create goal</button> 
+					<div class="planning__task_body">
+						<h2 class="planning__header">Global goals</h2>
+						<ul class="planning__list_tasks">
+							<li class="planning__task" >
+								<span class ="global_task">Task</span>
+								<button class="planning__task__button">+</button>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+								<ul class="planning__list_tasks"> 
 									<li class="planning__task">
 										<span>Subtask</span>
 										<button class="planning__task__button">+</button>
@@ -64,76 +43,104 @@
 										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
 									</li>
 									<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
-								</ul>
-								<li class="planning__task">
-									<span>Subtask</span>
-									<button class="planning__task__button">+</button>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-								<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
-							</ul>	
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="choose_day">
-				<button class="choose_day__button"><img class = "choose_day__icon" src="images/calendar.png"></button>
-			</section>
-			
-			<section class="planning">
-				<button class="planning__button_add add_daily_task">Create task</button> 
-				<div class="planning__task_body">
-					<h2 class="planning__header">Daily tasks</h2>
-					<ul class="planning__list_tasks">
-						<li class="planning__task">
-							<span>Subtask</span>
-							<input type="checkbox" class="planning__task__checkbox"/>
-							<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-							<ul class="planning__list_tasks"> 
-								<li class="planning__task">
-									<span>Subtask</span>
-									<input type="checkbox" class="planning__task__checkbox"/>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-								<li class="planning__task">
-									<span>Subtask</span>
-									<input type="checkbox" class="planning__task__checkbox"/>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-							</ul>	
-						</li>
-						<li class="planning__task">
-							<span>Subtask</span>
-							<input type="checkbox" class="planning__task__checkbox"/>
-							<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-							<ul class="planning__list_tasks">
-								<li class="planning__task">
-									<span>Subtask</span>
-									<input type="checkbox" class="planning__task__checkbox"/>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
+								</ul>	
+							</li>
+							<li class="planning__task">
+								<span class ="global_task">Task</span>
+								<button class="planning__task__button">+</button>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+								<ul class="planning__list_tasks">
+									<li class="planning__task">
+										<span>Subtask</span>
+										<button class="planning__task__button">+</button>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+									<ul class="planning__list_tasks">
+										<li class="planning__task">
+											<span>Subtask</span>
+											<button class="planning__task__button">+</button>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+										<li class="planning__task">
+											<span>Subtask</span>
+											<button class="planning__task__button">+</button>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+										<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
+									</ul>
+									<li class="planning__task">
+										<span>Subtask</span>
+										<button class="planning__task__button">+</button>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+									<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
+								</ul>	
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="choose_day">
+					<button class="choose_day__button"><img class = "choose_day__icon" src="images/calendar.png"></button>
+					<div class="choose_day__bar">
+						<p>Choose day</p>
+					</div>
+				</section>
+				
+				<section class="planning">
+					<button class="planning__button_add add_daily_task">Create task</button> 
+					<div class="planning__task_body">
+						<h2 class="planning__header">Daily tasks</h2>
+						<ul class="planning__list_tasks">
+							<li class="planning__task">
+								<span>Subtask</span>
+								<input type="checkbox" class="planning__task__checkbox"/>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+								<ul class="planning__list_tasks"> 
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+								</ul>	
+							</li>
+							<li class="planning__task">
+								<span>Subtask</span>
+								<input type="checkbox" class="planning__task__checkbox"/>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
 								<ul class="planning__list_tasks">
 									<li class="planning__task">
 										<span>Subtask</span>
 										<input type="checkbox" class="planning__task__checkbox"/>
 										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
 									</li>
+									<ul class="planning__list_tasks">
+										<li class="planning__task">
+											<span>Subtask</span>
+											<input type="checkbox" class="planning__task__checkbox"/>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+										<li class="planning__task">
+											<span>Subtask</span>
+											<input type="checkbox" class="planning__task__checkbox"/>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+									</ul>
 									<li class="planning__task">
 										<span>Subtask</span>
 										<input type="checkbox" class="planning__task__checkbox"/>
 										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
 									</li>
-								</ul>
-								<li class="planning__task">
-									<span>Subtask</span>
-									<input type="checkbox" class="planning__task__checkbox"/>
-									<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								</li>
-							</ul>	
-						</li>
-					</ul>
-				</div>
-			</section>
+								</ul>	
+							</li>
+						</ul>
+					</div>
+				</section>
+			</div>
 		</main>
 		<footer>
 			<div class="contacts">
