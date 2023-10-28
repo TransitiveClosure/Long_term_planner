@@ -27,7 +27,11 @@ html {
         font-size: 45px;
   }
 }
-
+@media (min-width: 3000px) {
+    html {
+        font-size: 90px;
+  }
+}
 header {
     display: flex;
     flex-direction: column;
@@ -169,6 +173,14 @@ p {
     list-style-type: none;
 }
 
+.planning__task__button {
+    height: 0.8rem; 
+    width: 0.8rem;
+    font-size: 0.5rem;
+    padding: 0;
+    text-align: center;
+}
+
 .planning__input_add_task {
     background: none;
     border: none;
@@ -183,11 +195,15 @@ p {
 
 .planning__task__trashbox {
     object-position: 50% 100%;
-    width: 1.1em;
-    height: 1.1em;
+    width: 0.8rem;
+    height: 0.8rem;
     filter: drop-shadow(0 -1px 4px rgb(160, 0, 210))
 }
 
+.planning__task__checkbox {
+    width: 0.4rem;
+    height: 0.4rem;
+}
 .choose_day {
     width: 5%;
     margin: 5px 10px 10px 10px;
