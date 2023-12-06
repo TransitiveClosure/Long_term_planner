@@ -14,8 +14,38 @@
 .planning__button_add {
     width: 100%;
     font-size: 1.4rem;
+    border-style: none;
+    padding-block: 0px;
+    padding-inline:  0;
+    font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
+    border-radius: 5px;
+    background-image: url(../../images/button_image_f.jpg);
+    color: black;
+    text-align: center;
 }
 
+.planning__button_add::placeholder {
+    font-size: 1.4rem;
+    border-style: none;
+    font-family:'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
+    color: black;
+    text-align: center;
+}
+
+.planning__button_add:focus-visible {
+    outline: none;
+}
+
+.planning__task__entity {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.subtasks {
+    font-size: 1rem;
+}
 .planning__task_body {
     width: 100%;
     height: 85%;
@@ -38,7 +68,7 @@
     padding-left: 10px;
 }
 .global_task{
-    background-color: rgb(244, 224, 190);
+    color: rgb(16, 187, 179)
 }
 
 .planning__task {
@@ -47,23 +77,47 @@
 
 .planning__task span {
     list-style-type: none;
+    margin-right: 1 rem;
 }
 
 .planning__task__button {
     height: 1rem; 
     width: 1rem;
-    font-size: 0.8rem;
+    font-size: 1.4rem;
     padding: 0;
     text-align: center;
+    background-image: none;
+    background-color: rgb(244, 227, 215);
+    border:none;
 }
 
+.planning__task__button:hover {
+    color:rgb(22, 179, 108) 
+}
 .planning__input_add_task {
     background: none;
     border: none;
     font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    opacity: 0;
 }
 
+.planning__input_add_task:hover, .planning__input_add_task:focus{
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    opacity: 100;
+}
+
+/* .planning__task__buttons {
+    display: flex;
+    align-items: center;
+} */
+
+.add_global_task {
+    font-size: 0;
+}
 .planning__task__trashbox_button {
     background: none;
     border: none;

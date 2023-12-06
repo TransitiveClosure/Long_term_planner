@@ -25,10 +25,12 @@
 		<main>
 			<div class="planning_container">
 				<section class="planning">
-					<button class="planning__button_add add_global_task">Create goal</button> 
+					<form method="post" id="add_global_task" name="add_global_task">
+						<input class="planning__button_add"  id="add_global" name="add_global" placeholder="Create goal"></input> 
+					</form>
 					<div class="planning__task_body">
 						<h2 class="planning__header">Global goals</h2>
-						<ul class="planning__list_tasks">
+						<ul class="planning__list_tasks global_tasks">
 							<li class="planning__task" >
 								<span class ="global_task">Task</span>
 								<button class="planning__task__button">+</button>
@@ -44,7 +46,10 @@
 										<button class="planning__task__button">+</button>
 										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
 									</li>
-									<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
+									<form method="post" class="add_global_task" name="add_global_task">
+										<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
+									</form>
+	
 								</ul>	
 							</li>
 							<li class="planning__task">
@@ -89,7 +94,9 @@
 				</section>
 				
 				<section class="planning">
-					<button class="planning__button_add add_daily_task">Create task</button> 
+					<form  method="post" id="add_daily_task" name="add_daily_task">
+						<input class="planning__button_add"  placeholder="Create task"></input> 
+					</form>
 					<div class="planning__task_body">
 						<h2 class="planning__header">Daily tasks</h2>
 						<ul class="planning__list_tasks">
@@ -157,5 +164,5 @@
 			</div>
 		</footer>
 	</body>
-	
+	<script type="text/javascript" src="js/task_boards.js"></script>
 </html>
