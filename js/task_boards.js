@@ -55,7 +55,7 @@ function parse_list_tree(element) {
     }
     return task_arr;
 }
-update_global_tasks(".planning__list_tasks.global_tasks")
+
 
 var form = document.getElementById("add_global_task");
 function handleForm(event) { 

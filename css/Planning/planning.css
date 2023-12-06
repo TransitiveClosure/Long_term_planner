@@ -77,7 +77,6 @@
 
 .planning__task span {
     list-style-type: none;
-    margin-right: 1 rem;
 }
 
 .planning__task__button {
@@ -92,7 +91,7 @@
 }
 
 .planning__task__button:hover {
-    color:rgb(22, 179, 108) 
+    color:rgb(22, 179, 108);
 }
 .planning__input_add_task {
     background: none;
@@ -110,11 +109,6 @@
     opacity: 100;
 }
 
-/* .planning__task__buttons {
-    display: flex;
-    align-items: center;
-} */
-
 .add_global_task {
     font-size: 0;
 }
@@ -127,7 +121,7 @@
     object-position: 50% 100%;
     width: 0.8rem;
     height: 0.8rem;
-    filter: drop-shadow(0 -1px 4px rgb(160, 0, 210))
+    filter: drop-shadow(0 -1px 4px rgb(160, 0, 210));
 }
 
 .planning__task__checkbox {
@@ -156,7 +150,6 @@
 .choose_day__bar {
     height: 100%;
     background-color: white;
-    /* background-image: url(../images/button_image_f.jpg); */
 }
 
 .choose_day__bar p{
