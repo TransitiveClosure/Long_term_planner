@@ -6,14 +6,9 @@ function update_global_tasks(class_name) {
     for (let child of parse_global_task_json(json_global_tasks, "global_task", "subtasks")) {
         root.appendChild(child);
     }
-    // console.log("data: ", JSON.parse(json_global_tasks));
 }
 
 function parse_global_task_json(element, span_class, child_span_class){
-    // let span_class = "subtasks";
-    // if (element.className == "planning") {
-    //     span_class = "global_task";
-    // }
     let list_tasks = []
     for(let item of element) {
         let span = create_task_span(item["value"], span_class);
@@ -36,6 +31,11 @@ function save_global_tasks_state() {
     localStorage.setItem("global_tasks", JSON.stringify(json_global_tasks));
 }
 
+function remove_task(event){
+    event.currentTarget.parentElement.parentElement.parentElement.remove();
+    save_global_tasks_state();
+}
+
 function parse_list_tree(element) {
     let task_arr = [];
     for(let item of element.children) {
@@ -56,11 +56,7 @@ function parse_list_tree(element) {
     return task_arr;
 }
 update_global_tasks(".planning__list_tasks.global_tasks")
-// function update_global_tasks(address) {
 
-// }
-
-// const form = document.querySelector("#add_global_task");
 var form = document.getElementById("add_global_task");
 function handleForm(event) { 
     event.preventDefault(); 
@@ -81,7 +77,7 @@ function handleForm(event) {
         ul = event.currentTarget.parentElement;
         ul.appendChild(myLi);
     }
-    save_global_tasks_state()
+    save_global_tasks_state();
 } 
 form.addEventListener('submit', handleForm);
 
@@ -94,48 +90,7 @@ function add_global_task() {
 }
 
 function create_task(input_value, span_class) {
-    let myLi = document.createElement("li");
-    myLi.className = "planning__task" ;
-
-    let myText = document.createElement("span");
-    myText.className = span_class;
-    myText.textContent = input_value;
-    
-    let myB1 = document.createElement("button");
-    myB1.textContent = "+";
-    myB1.className = "planning__task__button";
-    
-    let myB2 = document.createElement("button");
-    myB2.className = "planning__task__trashbox_button";
-    let trash = document.createElement("img");
-    trash.className = "planning__task__trashbox";
-    trash.src = "images/trashbox.png";
-    myB2.appendChild(trash);
-    let myButtons = document.createElement("div");
-    myButtons.className = "planning__task__buttons"
-    myButtons.appendChild(myB1);
-    myButtons.appendChild(myB2);
-
-    let mytaskBody = document.createElement("div");
-    mytaskBody.className = "planning__task__entity";
-    mytaskBody.appendChild(myText);
-    mytaskBody.appendChild(myButtons);
-
-    let myList = document.createElement("ul");
-    myList.className = "planning__list_tasks";
-    let myInput = document.createElement("input");
-    myInput.type="text";
-    myInput.className="planning__input_add_task";
-    myInput.placeholder="Enter task name";
-    let myForm = document.createElement("form");
-    myForm.className = "add_global_task";
-    myForm.appendChild(myInput);
-    myForm.addEventListener('submit', handleForm);
-    myList.appendChild(myForm);
-
-    myLi.appendChild(mytaskBody);
-    myLi.appendChild(myList);
-    return myLi;
+    return create_task_element(create_task_span(input_value, span_class), create_tasks_list())
 }
 
 function create_task_span(input_value, span_class) {
@@ -156,6 +111,7 @@ function create_task_buttons() {
     trash.className = "planning__task__trashbox";
     trash.src = "images/trashbox.png";
     myB2.appendChild(trash);
+    myB2.addEventListener("click", remove_task)
     let myButtons = document.createElement("div");
     myButtons.className = "planning__task__buttons"
     myButtons.appendChild(myB1);
@@ -194,18 +150,3 @@ function create_task_element(taskText, myList) {
     return myLi;
 
 }
-// form.addEventListener("submit", async (event) => {
-//     const formData = new FormData(form);
-//     alert(1);
-//     formData.append("CustomField", "This is some extra data");
-//     alert(1);
-//     const response = await fetch("stash.php", {
-//     method: "POST",
-//     body: formData,
-//     });
-//     event.preventDefault();
-// });
-// $("#add_global_task").submit(function(e) {
-//     e.preventDefault();
-// });
-// function(add_gloabal_task())
