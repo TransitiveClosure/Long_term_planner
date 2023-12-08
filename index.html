@@ -16,10 +16,10 @@
 				<img class="site_logo" src="images/logo.png" width="100" height="100"/>
 				<h1 class="site_name">Board 1</h1>
 			</div>	
-			<nav class="menu_bar" data-intro='This is menu buttons. You can go to boards list, change user or change settings'>
-				<button class="menu_bar__button log_out_button" onclick="log_out()">Log out</button>
-				<button class="menu_bar__button boards_button" onclick="change_board()">Change board</button>
-				<button class="menu_bar__button settings_button" onclick="settings()">Settings</button>
+			<nav class="menu_bar">
+				<button class="menu_bar__button log_out_button" data-intro="You can use this button to change user!" onclick="log_out()">Log out</button>
+				<button class="menu_bar__button boards_button" data-intro="This button show you all your boards!" onclick="change_board()">Change board</button>
+				<button class="menu_bar__button settings_button" data-intro="Choose personal settings with this button" onclick="settings()">Settings</button>
 			</nav>
 		</header> 
 		<main>
@@ -33,19 +33,19 @@
 						<ul class="planning__list_tasks global_tasks" data-intro='Here will be your global tasks'>
 							<li class="planning__task">
 								<div class="planning__task__entity">
-									<span class="global_task">fdas</span>
+									<span class="global_task">Task</span>
 									<div class="planning__task__buttons">
 										<button class="planning__task__button">+</button>
-										<button class="planning__task__trashbox_button"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
+										<button class="planning__task__trashbox_button"  data-intro="Use this button to remove task"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
 									</div>
 								</div>
 									<ul class="planning__list_tasks">
-										<form class="add_global_task">
+										<form class="add_global_task"  data-intro="Use this field to add new subtasks">
 											<input type="text" class="planning__input_add_task" placeholder="Enter task name">
 										</form>
 										<li class="planning__task">
 											<div class="planning__task__entity">
-												<span class="subtasks">adsg</span>
+												<span class="subtasks">Subtask</span>
 												<div class="planning__task__buttons">
 													<button class="planning__task__button">+</button>
 													<button class="planning__task__trashbox_button"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
@@ -84,7 +84,7 @@
 					</div>
 				</section>
 				
-				<section class="planning">
+				<section class="planning"  data-intro="Here you can see your daily plan">
 					<form  method="post" id="add_daily_task" name="add_daily_task">
 						<input class="planning__button_add"  placeholder="Create task"></input> 
 					</form>
@@ -143,13 +143,13 @@
 			</div>
 		</main>
 		<footer>
-			<div class="contacts">
+			<div class="contacts"  data-intro="Use this contacts to stay in touch with us">
 				<h6>Our contacts:</h6>
 				<p>+7-888-888-88-88</p>
 				<p>mail@mail.ru</p>
 				<a href ="">Donate</a>
 			</div>	
-			<div class="load_time">
+			<div class="load_time" data-intro="Information about load">
 				<p>The page loaded in <span id="load_time__number"></span> seconds</p>
 				<p id="benchmark_message"></p>
 			</div>
