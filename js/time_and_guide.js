@@ -1,6 +1,6 @@
 // introJs().start();
 
-introJs().setDontShowAgain(true).setOptions({
+introJs().setOptions({
     tooltipClass: 'customTooltip'
   }).onbeforeexit( 
 function(){
