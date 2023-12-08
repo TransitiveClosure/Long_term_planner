@@ -17,83 +17,74 @@
 				<h1 class="site_name">Board 1</h1>
 			</div>	
 			<nav class="menu_bar">
-				<button class="menu_bar__button log_out_button" onclick="log_out()">Log out</button>
-				<button class="menu_bar__button boards_button" onclick="change_board()">Change board</button>
-				<button class="menu_bar__button settings_button" onclick="settings()">Settings</button>
+				<button class="menu_bar__button log_out_button" data-intro="You can use this button to change user!" onclick="log_out()">Log out</button>
+				<button class="menu_bar__button boards_button" data-intro="This button show you all your boards!" onclick="change_board()">Change board</button>
+				<button class="menu_bar__button settings_button" data-intro="Choose personal settings with this button" onclick="settings()">Settings</button>
 			</nav>
 		</header> 
 		<main>
 			<div class="planning_container">
 				<section class="planning">
-					<form method="post" id="add_global_task" name="add_global_task">
+					<form method="post" id="add_global_task" name="add_global_task" data-intro='Write here new global task and push "Enter"'>
 						<input class="planning__button_add"  id="add_global" name="add_global" placeholder="Create goal"></input> 
 					</form>
 					<div class="planning__task_body">
 						<h2 class="planning__header">Global goals</h2>
-						<ul class="planning__list_tasks global_tasks">
-							<!-- <li class="planning__task" >
-								<span class ="global_task">Task</span>
-								<button class="planning__task__button">+</button>
-								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								<ul class="planning__list_tasks"> 
-									<li class="planning__task">
-										<span>Subtask</span>
-										<button class="planning__task__button">+</button>
-										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-									</li>
-									<li class="planning__task">
-										<span>Subtask</span>
-										<button class="planning__task__button">+</button>
-										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-									</li>
-									<form method="post" class="add_global_task" name="add_global_task">
-										<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
-									</form>
-	
-								</ul>	
-							</li>
+						<ul class="planning__list_tasks global_tasks" data-intro='Here will be your global tasks'>
 							<li class="planning__task">
-								<span class ="global_task">Task</span>
-								<button class="planning__task__button">+</button>
-								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-								<ul class="planning__list_tasks">
-									<li class="planning__task">
-										<span>Subtask</span>
+								<div class="planning__task__entity">
+									<span class="global_task">Task</span>
+									<div class="planning__task__buttons">
 										<button class="planning__task__button">+</button>
-										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-									</li>
+										<button class="planning__task__trashbox_button"  data-intro="Use this button to remove task"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
+									</div>
+								</div>
 									<ul class="planning__list_tasks">
+										<form class="add_global_task"  data-intro="Use this field to add new subtasks">
+											<input type="text" class="planning__input_add_task" placeholder="Enter task name">
+										</form>
 										<li class="planning__task">
-											<span>Subtask</span>
-											<button class="planning__task__button">+</button>
-											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+											<div class="planning__task__entity">
+												<span class="subtasks">Subtask</span>
+												<div class="planning__task__buttons">
+													<button class="planning__task__button">+</button>
+													<button class="planning__task__trashbox_button"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
+												</div>
+											</div>
+											<ul class="planning__list_tasks">
+												<form class="add_global_task">
+													<input type="text" class="planning__input_add_task" placeholder="Enter task name">
+												</form>
+											</ul>
 										</li>
-										<li class="planning__task">
-											<span>Subtask</span>
-											<button class="planning__task__button">+</button>
-											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-										</li>
-										<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
 									</ul>
-									<li class="planning__task">
-										<span>Subtask</span>
-										<button class="planning__task__button">+</button>
-										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
-									</li>
-									<input type="text" class="planning__input_add_task" placeholder="Enter task name"/>
-								</ul>	
-							</li> -->
+								</li>
+								<li class="planning__task">
+									<div class="planning__task__entity">
+										<span class="global_task">gsa</span>
+										<div class="planning__task__buttons">
+											<button class="planning__task__button">+</button>
+											<button class="planning__task__trashbox_button"><img class="planning__task__trashbox" src="images/trashbox.png"></button>
+										</div>
+									</div>
+									<ul class="planning__list_tasks">
+										<form class="add_global_task">
+											<input type="text" class="planning__input_add_task" placeholder="Enter task name">
+										</form>
+									</ul>
+								</li>
+							</ul>
 						</ul>
 					</div>
 				</section>
-				<section class="choose_day">
+				<section class="choose_day" data-intro='Here you can choose day for planning'>
 					<button class="choose_day__button"><img class = "choose_day__icon" src="images/calendar.png"></button>
 					<div class="choose_day__bar">
 						<p>Choose day</p>
 					</div>
 				</section>
 				
-				<section class="planning">
+				<section class="planning"  data-intro="Here you can see your daily plan">
 					<form  method="post" id="add_daily_task" name="add_daily_task">
 						<input class="planning__button_add"  placeholder="Create task"></input> 
 					</form>
@@ -152,17 +143,19 @@
 			</div>
 		</main>
 		<footer>
-			<div class="contacts">
+			<div class="contacts"  data-intro="Use this contacts to stay in touch with us">
 				<h6>Our contacts:</h6>
 				<p>+7-888-888-88-88</p>
 				<p>mail@mail.ru</p>
 				<a href ="">Donate</a>
 			</div>	
-			<div class="load_time">
+			<div class="load_time" data-intro="Information about load">
 				<p>The page loaded in <span id="load_time__number"></span> seconds</p>
 				<p id="benchmark_message"></p>
 			</div>
 		</footer>
+		<script type="text/javascript" src="css/package/intro.js"></script>
 	</body>
 	<script type="text/javascript" src="js/task_boards.js"></script>
+	<script type="text/javascript" src="js/time_and_guide.js"></script>
 </html>
