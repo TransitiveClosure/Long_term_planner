@@ -8,3 +8,4 @@ function(){
         ).start();
 
 // introJs().start()
+var picker = new Pikaday({ field: document.getElementById('datepicker') });

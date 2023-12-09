@@ -2,6 +2,7 @@
 <html lang="ru">
 	<head>
 		<script type="text/javascript" src="js/load_time.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 		<link href="css/index_style.css" rel="stylesheet">
 		<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
 		<title>My tasks</title>
@@ -9,6 +10,7 @@
 		<meta name="keywords" content="Доска, задачи, список, планирование">
 		<meta name="description" content="Список задач долгосрочного планирования и список задач на день">
 		<script type="text/javascript" src="js/menu_buttons.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 	</head>
 	<body>
 		<header>
@@ -78,7 +80,7 @@
 					</div>
 				</section>
 				<section class="choose_day" data-intro='Here you can choose day for planning'>
-					<button class="choose_day__button"><img class = "choose_day__icon" src="images/calendar.png"></button>
+					<button class="choose_day__button" id="datepicker"><img class = "choose_day__icon" src="images/calendar.png"></button>
 					<div class="choose_day__bar">
 						<p>Choose day</p>
 					</div>
