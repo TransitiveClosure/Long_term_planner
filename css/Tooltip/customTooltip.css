@@ -1,30 +1,3 @@
-.customTooltip * {
-    font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
-    background-color: rgb(113, 70, 122);
-    font-size: 1rem;
-  }
-  
-.customTooltip .introjs-tooltip-title {
-    font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
-    background-color: rgb(113, 70, 122);
-    color: rgb(77, 255, 77);
-}
-.customTooltip .introjs-button.introjs-prevbutton{
-    color: rgb(77, 255, 77);
-    text-shadow:  1px 1px 0 rgb(117, 236, 117);
-    background-color: rgb(100, 59, 107);
-    font-size: 0.7rem;
-}
-
-
-
-.customTooltip .introjs-button.introjs-nextbutton{
-    color: rgb(77, 255, 77);
-    text-shadow:  1px 1px 0 rgb(117, 236, 117);
-    background-color: rgb(100, 59, 107);
-    font-size: 0.7rem;
-}
-
 .pika-label, .pika-table {
     font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
 }

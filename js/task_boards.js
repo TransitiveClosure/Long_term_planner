@@ -14,8 +14,8 @@ function parse_global_task_json(element, span_class, child_span_class){
         let span = create_task_span(item["value"], span_class);
         let children_list = create_tasks_list();
         if (item["children"].length != 0) {
-            for (let child of parse_global_task_json(item["children"])) {
-                children_list.appendChild(child, child_span_class, child_span_class);
+            for (let child of parse_global_task_json(item["children"], child_span_class, child_span_class)) {
+                children_list.appendChild(child);
             }
         }
         task = create_task_element(span, children_list)
