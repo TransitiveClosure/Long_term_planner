@@ -1,20 +1,25 @@
-function update_global_tasks(root_obj_class, json_obj_name, class_name, subclass_name) {
+function update_tasks(root_obj_class, json_obj_name, class_name, subclass_name, create_task_element, get_children_list) {
     document.querySelector(root_obj_class).innerHTML = "";
     let json_string = localStorage.getItem(json_obj_name);
-    let json_global_tasks = JSON.parse(json_string);
-    let root = document.querySelector(root_obj_class);
-    for (let child of parse_global_task_json(json_global_tasks, class_name, subclass_name)) {
-        root.appendChild(child);
+    if (json_string != null)
+    {
+        let json_global_tasks = JSON.parse(json_string);
+        let root = document.querySelector(root_obj_class);
+        for (let child of parse_task_json(json_global_tasks, class_name, subclass_name, create_task_element, get_children_list)) {
+            root.appendChild(child);
+        }
     }
 }
 
-function parse_global_task_json(element, span_class, child_span_class){
+function parse_task_json(element, span_class, child_span_class, create_task_element, get_children_list) {
     let list_tasks = []
-    for(let item of element) {
+    for (let item of element) {
+
         let span = create_task_span(item["value"], span_class);
-        let children_list = create_tasks_list();
+        let children_list = get_children_list();
+        // let children_list = create_global_tasks_list();
         if (item["children"].length != 0) {
-            for (let child of parse_global_task_json(item["children"], child_span_class, child_span_class)) {
+            for (let child of parse_task_json(item["children"], child_span_class, child_span_class, create_task_element, get_children_list)) {
                 children_list.appendChild(child);
             }
         }
@@ -24,16 +29,21 @@ function parse_global_task_json(element, span_class, child_span_class){
     return list_tasks
 }
 
-function save_global_tasks_state() {
-    let root = document.querySelector(".planning__list_tasks.global_tasks");
+
+function save_tasks_state(class_name, json_label) {
+    let root = document.querySelector(class_name);
     let json_global_tasks = parse_list_tree(root);
-    // console.log(json_global_tasks)
-    localStorage.setItem("global_tasks", JSON.stringify(json_global_tasks));
+    localStorage.setItem(json_label, JSON.stringify(json_global_tasks));
 }
 
-function remove_task(event){
+function remove_global_task(event) {
     event.currentTarget.parentElement.parentElement.parentElement.remove();
-    save_global_tasks_state();
+    save_tasks_state(".planning__list_tasks.global_tasks", "global_tasks");
+}
+
+function remove_daily_task(event) {
+    event.currentTarget.parentElement.parentElement.parentElement.remove();
+    save_tasks_state(get_choosen_data()  + "daily_tasks");
 }
 
 function parse_list_tree(element) {
@@ -58,28 +68,28 @@ function parse_list_tree(element) {
 
 
 var form = document.getElementById("add_global_task");
-function handleForm(event) { 
+function global_task_handleForm(event) { 
     event.preventDefault(); 
     if (event.currentTarget.querySelector('input').value == ""){
         return
     }
     
     if (event.currentTarget.parentElement.className == "planning") {
-        myLi = create_task(event.currentTarget.querySelector('input').value, "global_task");
+        myLi = create_global_task(event.currentTarget.querySelector('input').value, "global_task");
         event.currentTarget.querySelector('input').value = "";
         ul = document.querySelector(".planning__list_tasks.global_tasks");
         ul.appendChild(myLi);
     }
     else
     {
-        myLi = create_task(event.currentTarget.querySelector('input').value, "subtasks");
+        myLi = create_global_task(event.currentTarget.querySelector('input').value, "subtasks");
         event.currentTarget.querySelector('input').value = "";
         ul = event.currentTarget.parentElement;
         ul.appendChild(myLi);
     }
-    save_global_tasks_state();
+    save_tasks_state(".planning__list_tasks.global_tasks", "global_tasks");
 } 
-form.addEventListener('submit', handleForm);
+form.addEventListener('submit', global_task_handleForm);
 
 function add_global_task() {
     json_global_tasks = localStorage.getItem("b1_gt");
@@ -89,8 +99,8 @@ function add_global_task() {
 
 }
 
-function create_task(input_value, span_class) {
-    return create_task_element(create_task_span(input_value, span_class), create_tasks_list())
+function create_global_task(input_value, span_class) {
+    return create_global_task_element(create_task_span(input_value, span_class), create_global_tasks_list())
 }
 
 function create_task_span(input_value, span_class) {
@@ -100,7 +110,7 @@ function create_task_span(input_value, span_class) {
     return myText;
 }
 
-function create_task_buttons() {
+function create_global_task_buttons() {
     let myB1 = document.createElement("button");
     myB1.textContent = "+";
     myB1.className = "planning__task__button";
@@ -111,7 +121,7 @@ function create_task_buttons() {
     trash.className = "planning__task__trashbox";
     trash.src = "images/trashbox.png";
     myB2.appendChild(trash);
-    myB2.addEventListener("click", remove_task)
+    myB2.addEventListener("click", remove_global_task)
     let myButtons = document.createElement("div");
     myButtons.className = "planning__task__buttons"
     myButtons.appendChild(myB1);
@@ -119,7 +129,7 @@ function create_task_buttons() {
     return myButtons;
 }
 
-function create_task_body(myText, myButtons) {
+function create_global_task_body(myText, myButtons) {
     let myTaskBody = document.createElement("div");
     myTaskBody.className = "planning__task__entity";
     myTaskBody.appendChild(myText);
@@ -127,7 +137,7 @@ function create_task_body(myText, myButtons) {
     return myTaskBody;
 }
 
-function create_tasks_list() {
+function create_global_tasks_list() {
     let myList = document.createElement("ul");
     myList.className = "planning__list_tasks";
     let myInput = document.createElement("input");
@@ -137,16 +147,62 @@ function create_tasks_list() {
     let myForm = document.createElement("form");
     myForm.className = "add_global_task";
     myForm.appendChild(myInput);
-    myForm.addEventListener('submit', handleForm);
+    myForm.addEventListener('submit', global_task_handleForm);
     myList.appendChild(myForm);
     return myList;
 }
 
-function create_task_element(taskText, myList) {
+function create_global_task_element(taskText, myList) {
     let myLi = document.createElement("li");
     myLi.className = "planning__task" ;
-    myLi.appendChild(create_task_body(taskText, create_task_buttons()));
+    myLi.appendChild(create_global_task_body(taskText, create_global_task_buttons()));
     myLi.appendChild(myList);
     return myLi;
+}
 
+function get_daily_element(value, span_class) {
+    let span = create_task_span(value, span_class);
+    let children_list = create_daily_tasks_list();
+    return span, children_list;
+}
+
+function create_daily_task_element(taskText, myList) {
+    let myLi = document.createElement("li");
+    myLi.className = "planning__task" ;
+    myLi.appendChild(create_daily_task_body(taskText, create_daily_task_buttons()));
+    myLi.appendChild(myList);
+    return myLi;
+}
+
+function create_daily_task_buttons() {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "planning__task__checkbox";
+    
+    let myB2 = document.createElement("button");
+    myB2.className = "planning__task__trashbox_button";
+    let trash = document.createElement("img");
+    trash.className = "planning__task__trashbox";
+    trash.src = "images/trashbox.png";
+    myB2.appendChild(trash);
+    myB2.addEventListener("click", remove_daily_task)
+    let myButtons = document.createElement("div");
+    myButtons.className = "planning__task__buttons"
+    myButtons.appendChild(checkbox);
+    myButtons.appendChild(myB2);
+    return myButtons;
+}
+
+function create_daily_task_body(myText, myButtons) {
+    let myTaskBody = document.createElement("div");
+    myTaskBody.className = "planning__task__entity";
+    myTaskBody.appendChild(myText);
+    myTaskBody.appendChild(myButtons);
+    return myTaskBody;
+}
+
+function create_daily_tasks_list() {
+    let myList = document.createElement("ul");
+    myList.className = "planning__list_tasks";
+    return myList;
 }
