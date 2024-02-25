@@ -11,6 +11,19 @@ function update_tasks(root_obj_class, json_obj_name, class_name, subclass_name, 
     }
 }
 
+const picker = new Pikaday({ 
+    field: document.getElementById('datepicker') , 
+    format: 'MM/DD/YYYY', 
+    onSelect: function (){
+        update_tasks(".planning__list_tasks.daily_tasks", get_choosen_data()  + "daily_tasks", "subtasks", "subtasks", create_daily_task_element, create_daily_tasks_list)
+        }
+    });
+picker.setDate(new Date())
+function get_choosen_data()
+{
+    return picker.getDate().toLocaleDateString();
+}
+
 function parse_task_json(element, span_class, child_span_class, create_task_element, get_children_list) {
     let list_tasks = []
     for (let item of element) {
@@ -43,7 +56,7 @@ function remove_global_task(event) {
 
 function remove_daily_task(event) {
     event.currentTarget.parentElement.parentElement.parentElement.remove();
-    save_tasks_state(get_choosen_data()  + "daily_tasks");
+    save_tasks_state(".planning__list_tasks.daily_tasks", get_choosen_data()  + "daily_tasks");
 }
 
 function parse_list_tree(element) {
@@ -68,7 +81,10 @@ function parse_list_tree(element) {
 
 
 var form = document.getElementById("add_global_task");
+form.addEventListener('submit', global_task_handleForm);
+
 function global_task_handleForm(event) { 
+    
     event.preventDefault(); 
     if (event.currentTarget.querySelector('input').value == ""){
         return
@@ -89,14 +105,26 @@ function global_task_handleForm(event) {
     }
     save_tasks_state(".planning__list_tasks.global_tasks", "global_tasks");
 } 
-form.addEventListener('submit', global_task_handleForm);
+
+function transfer_task_between_tables(event) {  
+    let task_root = event.currentTarget.parentElement.parentElement.parentElement;
+    let curr_node = {};
+    curr_node["children"] = parse_list_tree(task_root.querySelector("ul"));
+    curr_node["value"] = task_root.querySelector("span").textContent;
+    
+    let ul_daily_task = document.querySelector(".planning__list_tasks.daily_tasks");
+    for (let child of parse_task_json([curr_node], "subtasks", "subtasks", create_daily_task_element, create_daily_tasks_list)) {
+        ul_daily_task.appendChild(child);
+    }
+    save_tasks_state(".planning__list_tasks.daily_tasks", get_choosen_data()  + "daily_tasks");
+    remove_global_task(event);
+} 
 
 function add_global_task() {
     json_global_tasks = localStorage.getItem("b1_gt");
     if (json_global_tasks == null) {
         json_global_tasks = []
     }
-
 }
 
 function create_global_task(input_value, span_class) {
@@ -114,6 +142,7 @@ function create_global_task_buttons() {
     let myB1 = document.createElement("button");
     myB1.textContent = "+";
     myB1.className = "planning__task__button";
+    myB1.addEventListener("click", transfer_task_between_tables);
     
     let myB2 = document.createElement("button");
     myB2.className = "planning__task__trashbox_button";
@@ -206,3 +235,4 @@ function create_daily_tasks_list() {
     myList.className = "planning__list_tasks";
     return myList;
 }
+
