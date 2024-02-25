@@ -1,9 +1,9 @@
-function update_global_tasks(class_name) {
-    document.querySelector(class_name).innerHTML = "";
-    let json_string = localStorage.getItem("global_tasks");
+function update_global_tasks(root_obj_class, json_obj_name, class_name, subclass_name) {
+    document.querySelector(root_obj_class).innerHTML = "";
+    let json_string = localStorage.getItem(json_obj_name);
     let json_global_tasks = JSON.parse(json_string);
-    let root = document.querySelector(".planning__list_tasks.global_tasks");
-    for (let child of parse_global_task_json(json_global_tasks, "global_task", "subtasks")) {
+    let root = document.querySelector(root_obj_class);
+    for (let child of parse_global_task_json(json_global_tasks, class_name, subclass_name)) {
         root.appendChild(child);
     }
 }
